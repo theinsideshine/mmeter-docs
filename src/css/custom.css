@@ -67,3 +67,23 @@
     display: block;
   }
 }
+
+
+/* Mejor contraste de cards en dark */
+[data-theme='dark'] .mm-card {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--ifm-color-emphasis-300);
+}
+
+[data-theme='dark'] .mm-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* Navbar más integrada con el fondo */
+[data-theme='dark'] .navbar {
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.6),
+    rgba(0,0,0,0)
+  );
+}

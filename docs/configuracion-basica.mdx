@@ -1,0 +1,248 @@
+import Callout from '../src/components/Callout';
+
+# Configuración básica
+
+En esta sección se explica cómo usar el **modo de configuración básica** de Mmeter.  
+Este modo permite ajustar los parámetros principales del equipo **desde la app**, sin necesidad de acceder a configuraciones avanzadas.
+
+Es importante tener en cuenta que **el equipo inicia siempre en modo Medición** y que los cambios realizados en configuración básica se aplican cuando el equipo vuelve a ese modo.
+
+---
+
+## Modos de funcionamiento
+
+<a href="/img/cfg/modos.jpg" target="_blank" rel="noreferrer">
+  <img
+    src="/img/cfg/modos.jpg"
+    alt="Mmeter – Modos de funcionamiento"
+    className="mm-feature-img"
+    style={{ float: "right", margin: "0 0 1.5rem 1.5rem" }}
+  />
+</a>
+
+Mmeter cuenta con **tres modos de funcionamiento**:
+
+- **Medición**  
+  Modo normal de uso.  
+  El equipo mide y envía datos de forma continua.  
+  **Este es el modo en el que el equipo inicia y opera normalmente.**
+
+- **Configuración básica**  
+  Permite ajustar los parámetros principales del entorno desde la app.  
+  **Los cambios se guardan, pero se aplican al volver a modo Medición.**  
+  Este es el modo que se explica en esta sección.
+
+- **Configuración avanzada**  
+  Incluye opciones avanzadas del sistema y se documenta por separado.
+
+<div style={{ clear: "both" }} />
+
+---
+
+## Acceder al modo de configuración básica
+
+<a href="/img/cfg/modo_b.jpg" target="_blank" rel="noreferrer">
+  <img
+    src="/img/cfg/modo_b.jpg"
+    alt="Mmeter – Acceso al modo de configuración básica"
+    className="mm-feature-img"
+    style={{ float: "right", margin: "0 0 1.5rem 1.5rem" }}
+  />
+</a>
+
+Para ingresar al modo de configuración básica:
+
+1. Abrí la app.
+2. Seleccioná el equipo Mmeter.
+3. En **Modo de ejecución**, tocá la **B**.
+
+Al hacerlo, el equipo pasa a **configuración básica** y queda listo para recibir cambios desde la app.
+
+<Callout type="info" title="Aplicación de los cambios">
+Los valores configurados en este modo **se guardan**, pero **no entran en funcionamiento hasta que el equipo vuelve a modo Medición**.
+</Callout>
+
+<Callout type="info" title="Salir del modo de configuración">
+Para aplicar los cambios y volver al funcionamiento normal, cambiá nuevamente el modo a **Medición** desde el mismo control.
+</Callout>
+
+<div style={{ clear: "both" }} />
+
+---
+
+## Límites de temperatura
+
+<a href="/img/cfg/umbrales_t.jpg" target="_blank" rel="noreferrer">
+  <img
+    src="/img/cfg/umbrales_t.jpg"
+    alt="Mmeter – Límites de temperatura"
+    className="mm-feature-img"
+    style={{ float: "right", margin: "0 0 1.5rem 1.5rem" }}
+  />
+</a>
+
+En configuración básica podés definir los **límites de temperatura** del entorno:
+
+- Temperatura mínima y máxima durante el **día**
+- Temperatura mínima y máxima durante la **noche**
+
+Estos valores se utilizan para:
+- generar alertas
+- evaluar el estado del entorno
+- calcular indicadores derivados como el VPD
+
+<div style={{ clear: "both" }} />
+
+---
+
+## Límites de humedad
+
+<a href="/img/cfg/umbrales_h.jpg" target="_blank" rel="noreferrer">
+  <img
+    src="/img/cfg/umbrales_h.jpg"
+    alt="Mmeter – Límites de humedad"
+    className="mm-feature-img"
+    style={{ float: "left", margin: "0 1.5rem 1.5rem 0" }}
+  />
+</a>
+
+También podés ajustar los **límites de humedad**, diferenciando entre:
+
+- Valores mínimos y máximos de **día**
+- Valores mínimos y máximos de **noche**
+
+Esto permite adaptar el comportamiento del sistema a las condiciones deseadas en cada período.
+
+<div style={{ clear: "both" }} />
+
+---
+
+## Límites de VPD
+
+<a href="/img/cfg/umbrales_vpd.jpg" target="_blank" rel="noreferrer">
+  <img
+    src="/img/cfg/umbrales_vpd.jpg"
+    alt="Mmeter – Límites de VPD"
+    className="mm-feature-img"
+    style={{ float: "right", margin: "0 0 1.5rem 1.5rem" }}
+  />
+</a>
+
+El **VPD (Déficit de Presión de Vapor)** se calcula automáticamente a partir de la temperatura y la humedad.
+
+En este modo podés definir:
+- VPD mínimo y máximo de **día**
+- VPD mínimo y máximo de **noche**
+
+Estos límites se usan para evaluar si el entorno se encuentra dentro de los rangos esperados.
+
+<div style={{ clear: "both" }} />
+
+---
+
+## Límites de luz
+
+<a href="/img/cfg/umbrales_luz.jpg" target="_blank" rel="noreferrer">
+  <img
+    src="/img/cfg/umbrales_luz.jpg"
+    alt="Mmeter – Límites de luz"
+    className="mm-feature-img"
+    style={{ float: "left", margin: "0 1.5rem 1.5rem 0" }}
+  />
+</a>
+
+La medición de luz se utiliza de forma **referencial**, para detectar cambios de iluminación.
+
+En configuración básica podés ajustar:
+- **Nivel mínimo de luz durante el día**
+- **Nivel máximo de luz durante la noche**
+
+<div style={{ clear: "both" }} />
+
+---
+
+## Horarios de día y noche
+
+<a href="/img/cfg/horarios.jpg" target="_blank" rel="noreferrer">
+  <img
+    src="/img/cfg/horarios.jpg"
+    alt="Mmeter – Horarios de día y noche"
+    className="mm-feature-img"
+    style={{ float: "right", margin: "0 0 1.5rem 1.5rem" }}
+  />
+</a>
+
+Mmeter permite definir cuándo comienza el **período diurno** y el **período nocturno**.
+
+Estos horarios se usan para:
+- aplicar los límites correctos
+- interpretar las mediciones según el momento del día
+
+<div style={{ clear: "both" }} />
+
+---
+
+## Calibración básica de luz
+
+<a href="/img/cfg/cal_lux.jpg" target="_blank" rel="noreferrer">
+  <img
+    src="/img/cfg/cal_lux.jpg"
+    alt="Mmeter – Calibración básica de luz"
+    className="mm-feature-img"
+    style={{ float: "left", margin: "0 1.5rem 1.5rem 0" }}
+  />
+</a>
+
+Desde este modo también es posible realizar una **calibración básica de la medición de luz**.
+
+Esta calibración sirve para ajustar la referencia del sensor según la iluminación real del entorno donde está instalado el equipo.
+
+<div style={{ clear: "both" }} />
+
+---
+
+## Información del equipo
+
+<a href="/img/cfg/info.jpg" target="_blank" rel="noreferrer">
+  <img
+    src="/img/cfg/info.jpg"
+    alt="Mmeter – Información del equipo"
+    className="mm-feature-img"
+    style={{ float: "right", margin: "0 0 1.5rem 1.5rem" }}
+  />
+</a>
+
+La sección **Información** se encuentra disponible cuando el equipo está en **modo Medición**.
+
+Al tocar el ícono de información, se muestra el estado general del equipo y datos útiles para diagnóstico y verificación.
+
+Esta pantalla permite consultar:
+
+- **IP de conexión** utilizada para el modo **CFG** y procesos de calibración
+- **Modo actual:** indica si el equipo se encuentra en **día** o **noche**
+- **Versión de firmware** instalada
+- **Cantidad de reinicios** registrados
+
+Esta información es de solo lectura y sirve como referencia para soporte y control del estado del equipo.
+
+<div style={{ clear: "both" }} />
+
+---
+
+## Qué no se hace en configuración básica
+
+En este modo **no** se realizan:
+
+- ajustes avanzados del sistema
+- configuraciones internas
+- análisis detallado de datos
+
+Para eso existen otras secciones de la guía.
+
+---
+
+## ¿Qué sigue?
+
+Una vez finalizada la configuración básica y luego de volver a **modo Medición**, el equipo aplica los cambios y opera normalmente.
+
+➡️ Continuar con **[Uso diario](./uso-diario.md)**

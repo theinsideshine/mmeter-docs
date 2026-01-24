@@ -7,10 +7,10 @@ const sidebars = {
       type: 'category',
       label: 'Empezar',
       items: [
-        { type: 'doc', id: 'intro', label: 'Introducción' },
-        { type: 'doc', id: 'primeros-pasos', label: 'Primeros pasos' },
-        { type: 'doc', id: 'puesta-en-marcha', label: 'Puesta en marcha' },
-      ],
+          { type: 'doc', id: 'intro', label: 'Introducción' },
+          { type: 'doc', id: 'puesta-en-marcha', label: 'Puesta en marcha' },
+          { type: 'doc', id: 'configuracion-basica', label: 'Configuración básica' },
+        ],
     },
     {
       type: 'category',
