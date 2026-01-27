@@ -7,16 +7,17 @@ const sidebars = {
       type: 'category',
       label: 'Empezar',
       items: [
-          { type: 'doc', id: 'intro', label: 'Introducción' },
-          { type: 'doc', id: 'puesta-en-marcha', label: 'Puesta en marcha' },
-          { type: 'doc', id: 'configuracion-basica', label: 'Configuración básica' },
-        ],
+        { type: 'doc', id: 'intro', label: 'Introducción' },
+        { type: 'doc', id: 'puesta-en-marcha', label: 'Puesta en marcha' },
+        { type: 'doc', id: 'configuracion-basica', label: 'Configuración básica' },
+      ],
     },
     {
       type: 'category',
       label: 'Uso de Mmeter',
       items: [
         { type: 'doc', id: 'uso-diario', label: 'Uso diario' },
+        { type: 'doc', id: 'errores', label: 'Errores' }, // 👈 NUEVO
       ],
     },
     {

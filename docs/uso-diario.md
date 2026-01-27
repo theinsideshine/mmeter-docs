@@ -1,3 +1,0 @@
-# Uso diario
-
-Contenido próximamente.

@@ -1,0 +1,124 @@
+# Errores
+
+<a href="/img/intro/app_push.jpg" target="_blank" rel="noreferrer">
+  <img
+    src="/img/intro/app_push.jpg"
+    alt="Mmeter – Errores y mensajes"
+    className="mm-feature-img"
+    style={{ float: "right", margin: "0 0 1.5rem 1.5rem" }}
+  />
+</a>
+
+En esta sección se describen los mensajes de error más comunes y qué hacer en cada caso.
+
+Mmeter utiliza un **LED indicador** para mostrar rápidamente el tipo de error:
+en **errores fatales**, el LED se enciende con un **color específico** que ayuda a identificar la causa.
+
+<div style={{ clear: "both" }} />
+
+---
+
+## Errores fatales
+
+Un **error fatal** ocurre durante el arranque o al iniciar mediciones críticas.
+En este estado, el equipo **no continúa con el funcionamiento normal** hasta que se reinicie o se revise el problema.
+
+✅ **Señal visual:** el **LED queda encendido** con un color de error.
+
+### Colores del LED en errores fatales
+
+- **Rojo:** fallo de sensor **BME280** (temperatura/humedad).
+- **Amarillo:** fallo de sensor **TSL2561** (luz).
+- **Naranja:** problema de sincronización **NTP** (hora).
+- **OrangeRed:** no se pudo montar el almacenamiento interno (**LittleFS**).
+- **Azul:** no se pudo abrir el archivo de registro (log).
+
+> Si aparece un error fatal de sensor o almacenamiento y vuelve a repetirse después de reiniciar,
+> se recomienda **contactarse con el técnico**.
+
+---
+
+## Errores de sensores
+
+### Error de sensor (BME280) – LED rojo
+**Qué significa:** el equipo no pudo inicializar el sensor BME280.
+
+**Qué hacer:**
+- Reiniciar el equipo.
+- Si el error persiste, **contactarse con el técnico**.
+
+---
+
+### Error de sensor (TSL2561) – LED amarillo
+**Qué significa:** el equipo no pudo inicializar el sensor TSL2561.
+
+**Qué hacer:**
+- Reiniciar el equipo.
+- Si el error persiste, **contactarse con el técnico**.
+
+---
+
+## Error de hora (NTP) – LED naranja
+
+Mmeter intenta sincronizar la hora por internet (NTP) al iniciar.
+Si no lo logra dentro del tiempo esperado, se informa un error.
+
+**Qué hacer:**
+1. Verificar que el Wi-Fi tenga internet.
+2. Reiniciar el equipo.
+3. Si se repite, revisar la red (señal / cortes) o cambiar de red.
+
+---
+
+## Almacenamiento y registros (FS / LOG)
+
+### No monta el almacenamiento (LittleFS) – LED OrangeRed
+**Qué significa:** el equipo no pudo montar el almacenamiento interno.
+
+**Qué hacer:**
+- Reiniciar el equipo.
+- Si se repite, **contactarse con el técnico**.
+
+---
+
+### No abre el archivo de registro (LOG) – LED azul
+**Qué significa:** el equipo no pudo crear/abrir el archivo de registro.
+
+**Qué hacer:**
+- Reiniciar el equipo.
+- Si se repite, **contactarse con el técnico**.
+
+---
+
+## Conexión (Wi-Fi / Blynk)
+
+Si se pierde la conexión, el comportamiento puede variar según la duración del corte.
+
+- Puede haber momentos donde la app no reciba datos o eventos.
+- En cortes prolongados, el equipo puede **reiniciarse automáticamente por watchdog (WDT)**.
+- El LED puede indicar el estado de conexión (parpadeo/estado), y se explica en el video de esta sección.
+
+**Qué hacer:**
+- Verificar el Wi-Fi y la conexión a internet.
+- Esperar unos segundos y volver a intentar.
+- Si el problema persiste, reiniciar el equipo.
+
+---
+
+## Video
+
+Aquí podés agregar un video mostrando:
+- cómo se ven los errores fatales,
+- colores del LED,
+- comportamiento cuando se pierde Blynk/Wi-Fi,
+- reinicio por WDT y recuperación.
+
+<iframe
+  width="100%"
+  height="400"
+  src="https://www.youtube.com/embed/YdloKCMfLUs"
+  title="Mmeter – Errores y señales del LED"
+  frameBorder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowFullScreen
+/>

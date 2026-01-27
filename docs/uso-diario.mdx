@@ -1,0 +1,76 @@
+# Uso diario
+
+Esta sección describe el uso habitual de Mmeter en el día a día.
+Aquí se explica el funcionamiento normal del equipo y el sistema de notificaciones.
+
+---
+
+## Funcionamiento normal
+
+<a href="/img/uso_diario/meter_temp.jpg" target="_blank" rel="noreferrer">
+  <img
+    src="/img/uso_diario/meter_temp.jpg"
+    alt="Mmeter – Funcionamiento normal"
+    className="mm-feature-img"
+    style={{ float: "right", margin: "0 0 1.5rem 1.5rem" }}
+  />
+</a>
+
+En condiciones normales, Mmeter se utiliza en **modo medición**.
+
+Al encender el equipo:
+- Mmeter inicia automáticamente la medición.
+- La app muestra los valores en tiempo real.
+- No es necesario realizar acciones adicionales para comenzar a medir.
+
+Durante el uso diario:
+- El equipo permanece midiendo de forma continua.
+- Los valores se actualizan automáticamente.
+- El usuario puede supervisar las magnitudes desde la app en cualquier momento.
+
+Este es el modo de funcionamiento habitual del sistema.
+
+<div style={{ clear: "both" }} />
+
+---
+
+## Notificaciones push
+
+<a href="/img/uso_diario/push.jpg" target="_blank" rel="noreferrer">
+  <img
+    src="/img/uso_diario/push.jpg"
+    alt="Mmeter – Alertas y notificaciones"
+    className="mm-feature-img"
+    style={{ float: "left", margin: "0 1.5rem 1.5rem 0" }}
+  />
+</a>
+
+Mmeter utiliza **notificaciones push** para informar eventos relacionados con las **zonas de cada magnitud medida**.
+
+Las notificaciones se generan cuando un valor entra en una de las siguientes zonas:
+- **LOW** (valor bajo)
+- **OK** (valor dentro del rango normal)
+- **HIGH** (valor alto)
+
+Por cada cambio de zona, el sistema genera un evento que:
+- Envía una **notificación push a la app**.
+- Envía un **correo electrónico** asociado a la cuenta.
+
+Las notificaciones permiten al usuario estar informado del estado de las mediciones sin necesidad de abrir la app constantemente.
+
+> Las alertas son gestionadas por la plataforma y enviadas automáticamente por el sistema.
+
+<div style={{ clear: "both" }} />
+
+---
+
+### Evento de encendido
+
+Existe un evento de **encendido del equipo (power-up)**.
+Este evento es **configurable** y **no se encuentra activo por defecto**.
+
+La configuración de este evento se explica en la sección de **configuración avanzada**.
+
+---
+
+Para conocer el significado de mensajes y advertencias, consultar la sección **Errores**.
