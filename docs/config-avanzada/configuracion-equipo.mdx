@@ -1,0 +1,308 @@
+import Callout from '@site/src/components/Callout';
+
+# Configuración del equipo
+
+En esta sección se describen los parámetros disponibles en la **interfaz web de configuración** (modo **CFG**).
+
+> ⚠️ **Importante**  
+> Para acceder a esta pantalla, primero poné el equipo en **modo CFG** desde la app (ruedita).  
+> Luego ingresá la IP del equipo en un navegador (por ejemplo: `http://192.168.1.120`).
+
+<Callout type="info" title="Acceso desde distintos dispositivos">
+La interfaz de configuración avanzada es una **página web responsive**.  
+Se puede acceder tanto desde un **navegador en computadora (desktop)** como desde un **teléfono móvil (mobile)**, usando la IP del equipo.
+</Callout>
+
+<Callout type="info" title="Guardar y aplicar cambios">
+Los parámetros se **guardan desde esta página web** usando el botón **Guardar**.  
+Los cambios **no entran en funcionamiento** hasta que el equipo vuelve a **modo Medición** desde la app.
+</Callout>
+
+---
+
+## Interfaz web (referencia)
+
+<a href="/img/intro/app_temp.jpg" target="_blank" rel="noreferrer">
+  <img
+    src="/img/intro/app_temp.jpg"
+    alt="Mmeter – Configuración avanzada (interfaz web)"
+    className="mm-feature-img"
+    style={{ margin: "0 0 1.5rem 0" }}
+  />
+</a>
+
+---
+
+## Secciones y parámetros
+
+La interfaz está organizada en secciones. A continuación se detalla qué significa cada parámetro y para qué se usa.
+
+---
+
+## Básicos
+
+<a href="/img/intro/app_temp.jpg" target="_blank" rel="noreferrer">
+  <img
+    src="/img/intro/app_temp.jpg"
+    alt="Mmeter – Configuración avanzada – Básicos"
+    className="mm-feature-img"
+    style={{ float: "right", margin: "0 0 1.5rem 1.5rem" }}
+  />
+</a>
+
+En esta sección se configuran parámetros generales del sistema y del comportamiento de la app.
+
+### Log level
+Controla dónde se generan los logs del sistema.
+
+- **OFF**: sin logs.
+- **SERIAL**: logs solo por puerto serie (diagnóstico).
+- **LOG_ONLY**: logs solo en archivo interno.
+- **SERIAL_AND_LOG**: logs por serie y archivo.
+
+**Recomendación:** para uso normal, mantener un nivel bajo. Para diagnóstico, usar SERIAL o SERIAL_AND_LOG.
+
+### Plotter
+Selecciona qué variable se envía al modo “plotter” (salida pensada para ver en forma de gráfica/stream).
+
+- **OFF**
+- **TEMP+HUM**
+- **VPD**
+- **LUX**
+
+### Modo de medición (Blynk)
+Define qué mediciones se muestran/usan en la app (según el modo elegido).
+
+- **0 • Temperatura**
+- **1 • Humedad**
+- **2 • VPD**
+- **3 • Lux**
+- **4 • Todos**
+- **5 • Apagado**
+
+### Eventos de arranque (Blynk)
+Controla si el equipo envía eventos al iniciar:
+
+- **0 • OFF**: no envía eventos de arranque.
+- **1 • BOOT_ONLY**: envía el evento de encendido (power_up).
+- **2 • BOOT + INIT_ZONES**: envía power_up y además un “snapshot” de zonas iniciales.
+
+<div style={{ clear: "both" }} />
+
+---
+
+## Temperatura (°C)
+
+<a href="/img/intro/app_temp.jpg" target="_blank" rel="noreferrer">
+  <img
+    src="/img/intro/app_temp.jpg"
+    alt="Mmeter – Configuración avanzada – Temperatura"
+    className="mm-feature-img"
+    style={{ float: "right", margin: "0 0 1.5rem 1.5rem" }}
+  />
+</a>
+
+Define los límites de temperatura para **día** y **noche**. Estos valores se usan para evaluar el estado (LOW/OK/HIGH) y generar eventos.
+
+- **Mín. día** (`temp_min_day`)
+- **Máx. día** (`temp_max_day`)
+- **Mín. noche** (`temp_min_night`)
+- **Máx. noche** (`temp_max_night`)
+
+<div style={{ clear: "both" }} />
+
+---
+
+## Humedad (%)
+
+<a href="/img/intro/app_temp.jpg" target="_blank" rel="noreferrer">
+  <img
+    src="/img/intro/app_temp.jpg"
+    alt="Mmeter – Configuración avanzada – Humedad"
+    className="mm-feature-img"
+    style={{ float: "left", margin: "0 1.5rem 1.5rem 0" }}
+  />
+</a>
+
+Define los límites de humedad para **día** y **noche**.
+
+- **Mín. día** (`hum_min_day`)
+- **Máx. día** (`hum_max_day`)
+- **Mín. noche** (`hum_min_night`)
+- **Máx. noche** (`hum_max_night`)
+
+**Unidad:** porcentaje (%).
+
+<div style={{ clear: "both" }} />
+
+---
+
+## Luz
+
+<a href="/img/intro/app_temp.jpg" target="_blank" rel="noreferrer">
+  <img
+    src="/img/intro/app_temp.jpg"
+    alt="Mmeter – Configuración avanzada – Luz"
+    className="mm-feature-img"
+    style={{ float: "right", margin: "0 0 1.5rem 1.5rem" }}
+  />
+</a>
+
+Parámetros de luz diferenciados por unidad según el período:
+
+- Día: se expresa como **% de referencia** (referencia calibrada: `refMax`).
+- Noche: se expresa como **lux absolutos**.
+
+### Mín. de día (% de referencia)
+- `light_day_min_pct`  
+Mínimo de luz esperado durante el día en **%** respecto de la referencia calibrada.
+
+### Máx. de noche (lux)
+- `light_night_max_lux`  
+Máximo de luz esperado durante la noche en **lux**.
+
+<Callout type="info" title="Unidades de luz">
+De día se usa **%**, de noche se usa **lux**.
+</Callout>
+
+<div style={{ clear: "both" }} />
+
+---
+
+## VPD (kPa)
+
+<a href="/img/intro/app_temp.jpg" target="_blank" rel="noreferrer">
+  <img
+    src="/img/intro/app_temp.jpg"
+    alt="Mmeter – Configuración avanzada – VPD"
+    className="mm-feature-img"
+    style={{ float: "left", margin: "0 1.5rem 1.5rem 0" }}
+  />
+</a>
+
+Valores de VPD para control por **día** y **noche**, más un target de referencia.
+
+- **Target** (`vpd_target`)
+- **Mín. día** (`vpd_min_day`)
+- **Máx. día** (`vpd_max_day`)
+- **Mín. noche** (`vpd_min_night`)
+- **Máx. noche** (`vpd_max_night`)
+
+**Unidad:** kPa.
+
+<div style={{ clear: "both" }} />
+
+---
+
+## Horarios
+
+<a href="/img/intro/app_temp.jpg" target="_blank" rel="noreferrer">
+  <img
+    src="/img/intro/app_temp.jpg"
+    alt="Mmeter – Configuración avanzada – Horarios"
+    className="mm-feature-img"
+    style={{ float: "right", margin: "0 0 1.5rem 1.5rem" }}
+  />
+</a>
+
+Define el inicio de período **día** y **noche**.
+
+- **Inicio día (HH:MM)** (`time_day_start`)
+- **Inicio noche (HH:MM)** (`time_night_start`)
+
+<div style={{ clear: "both" }} />
+
+---
+
+## Histeresis
+
+<a href="/img/intro/app_temp.jpg" target="_blank" rel="noreferrer">
+  <img
+    src="/img/intro/app_temp.jpg"
+    alt="Mmeter – Configuración avanzada – Histéresis"
+    className="mm-feature-img"
+    style={{ float: "left", margin: "0 1.5rem 1.5rem 0" }}
+  />
+</a>
+
+La histéresis evita que el sistema cambie de zona continuamente cuando un valor está cerca del umbral.
+
+- **Temp (°C)** (`hysteresis_temp`)
+- **Humedad (%)** (`hysteresis_hum`)
+- **Luz día (% de referencia)** (`hysteresis_light_day_pct`)
+- **Luz noche (lux)** (`hysteresis_light_night_lux`)
+- **VPD (kPa)** (`hysteresis_vpd`)
+
+<Callout type="info" title="Histéresis y unidades">
+En luz: **día en %** y **noche en lux**.
+</Callout>
+
+<div style={{ clear: "both" }} />
+
+---
+
+## Flags / Info
+
+<a href="/img/intro/app_temp.jpg" target="_blank" rel="noreferrer">
+  <img
+    src="/img/intro/app_temp.jpg"
+    alt="Mmeter – Configuración avanzada – Flags e información"
+    className="mm-feature-img"
+    style={{ float: "right", margin: "0 0 1.5rem 1.5rem" }}
+  />
+</a>
+
+### ¿Es de día? (RO)
+Campo **solo lectura (RO)** que indica si el equipo considera que está en período **día** o **noche**, según los horarios configurados.
+
+### Mail destino notificaciones
+Correo electrónico donde se enviarán notificaciones asociadas a eventos del sistema.
+
+<div style={{ clear: "both" }} />
+
+---
+
+## Estado del dispositivo (RO)
+
+<a href="/img/intro/app_temp.jpg" target="_blank" rel="noreferrer">
+  <img
+    src="/img/intro/app_temp.jpg"
+    alt="Mmeter – Configuración avanzada – Estado del dispositivo"
+    className="mm-feature-img"
+    style={{ float: "left", margin: "0 1.5rem 1.5rem 0" }}
+  />
+</a>
+
+Sección **solo lectura** para diagnóstico:
+
+- **Restart count**: cantidad de reinicios acumulados.
+- **Restart reason**: motivo del último reinicio.
+- **Último restart**: marca temporal del último reinicio.
+
+<div style={{ clear: "both" }} />
+
+---
+
+## Guardar cambios
+
+Al final de la pantalla se encuentra el botón **Guardar**.
+
+<Callout type="info" title="Qué hace Guardar">
+El botón **Guardar** almacena los parámetros en el equipo desde la interfaz web.  
+Luego es necesario volver a **modo Medición** desde la app para aplicar los cambios.
+</Callout>
+
+---
+
+## Video de referencia (desktop)
+
+Este video muestra el uso de la configuración avanzada desde un navegador en computadora.
+
+<video controls width="100%" style={{ maxWidth: "900px" }}>
+  <source src="/video/config-avanzada.mp4" type="video/mp4" />
+  Tu navegador no soporta la reproducción de video.
+</video>
+
+---
+
+➡️ Si necesitás ajustar mediciones con instrumentos de referencia, consultá: **[Calibración de sensores](/docs/config-avanzada/calibracion)**

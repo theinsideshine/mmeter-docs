@@ -1,0 +1,241 @@
+import Callout from '@site/src/components/Callout';
+
+# Calibración de sensores
+
+La calibración permite ajustar la lectura de los sensores para que los valores medidos se adapten a un **criterio o patrón específico**.
+
+En condiciones normales, **Mmeter no requiere calibración** para funcionar correctamente.  
+Los sensores vienen calibrados de fábrica y son adecuados para la mayoría de los usos.
+
+La calibración está pensada para casos particulares donde se necesita:
+- que Mmeter **siga a otro instrumento de referencia**,
+- unificar lecturas entre **dos o más equipos**,
+- o trabajar bajo un **criterio técnico definido**.
+
+---
+
+## ¿Cuándo NO es necesario calibrar?
+
+En la mayoría de los casos:
+
+- Si los valores son **coherentes y estables**.
+- Si no necesitás comparar con otro equipo.
+- Si te interesa el **seguimiento de tendencias** más que el valor absoluto.
+
+👉 En estos escenarios, **no calibrar es la mejor opción**.
+
+<Callout type="info" title="Recomendación general">
+Si no existe un motivo claro para calibrar, es preferible **no modificar los valores de calibración**.
+</Callout>
+
+---
+
+## Concepto de calibración por comparación
+
+<a href="/img/intro/app_temp.jpg" target="_blank" rel="noreferrer">
+  <img
+    src="/img/intro/app_temp.jpg"
+    alt="Mmeter – Calibración por comparación (referencia visual)"
+    className="mm-feature-img"
+    style={{ float: "right", margin: "0 0 1.5rem 1.5rem" }}
+  />
+</a>
+
+En la práctica, la calibración suele hacerse comparando **dos sensores**:
+
+- un sensor de **referencia** (patrón),
+- y el sensor que se desea ajustar (Mmeter).
+
+El objetivo **no es “corregir la realidad”**, sino lograr que:
+> **un sensor siga al otro de forma consistente**
+
+Esto es especialmente útil cuando:
+- se trabaja con múltiples equipos,
+- se comparan registros históricos,
+- o se necesita coherencia entre sistemas distintos.
+
+<div style={{ clear: "both" }} />
+
+---
+
+## Calibración de temperatura y humedad
+
+<a href="/img/intro/app_temp.jpg" target="_blank" rel="noreferrer">
+  <img
+    src="/img/intro/app_temp.jpg"
+    alt="Mmeter – Calibración de temperatura y humedad (referencia visual)"
+    className="mm-feature-img"
+    style={{ float: "left", margin: "0 1.5rem 1.5rem 0" }}
+  />
+</a>
+
+### ¿Por qué puede calibrarse?
+
+La temperatura y la humedad pueden presentar **pequeños desvíos** entre sensores, incluso siendo del mismo modelo.
+
+Estos desvíos suelen ser:
+- constantes,
+- previsibles,
+- y corregibles mediante calibración.
+
+<div style={{ clear: "both" }} />
+
+---
+
+### Calibración de 1 punto
+
+La calibración de **un solo punto** asume que:
+- el desvío entre sensores es **lineal y constante**.
+
+Ejemplo:
+- Sensor A mide 24,0 °C
+- Sensor B mide 24,5 °C  
+→ existe un offset de +0,5 °C
+
+En este caso, calibrar un punto permite **alinear ambos sensores** alrededor de ese valor.
+
+✔️ Es la forma más simple y habitual.  
+✔️ Suficiente para la mayoría de los usos.
+
+---
+
+### Calibración de 2 puntos
+
+La calibración de **dos puntos** se utiliza cuando:
+- el desvío **no es constante**,
+- o se quiere mejorar la precisión en un rango amplio.
+
+Ejemplo:
+- A 20 °C el sensor tiene un desvío.
+- A 30 °C el desvío es distinto.
+
+En este caso se ajusta:
+- pendiente (ganancia),
+- y offset.
+
+⚠️ Requiere **más cuidado** y **mejores condiciones de prueba**.
+
+---
+
+## Importancia del ambiente controlado
+
+<a href="/img/intro/app_temp.jpg" target="_blank" rel="noreferrer">
+  <img
+    src="/img/intro/app_temp.jpg"
+    alt="Mmeter – Ambiente controlado para calibración (referencia visual)"
+    className="mm-feature-img"
+    style={{ float: "right", margin: "0 0 1.5rem 1.5rem" }}
+  />
+</a>
+
+Para calibrar correctamente es fundamental generar un **ambiente estable y controlado**.
+
+Buenas prácticas:
+- Colocar ambos sensores **muy cerca entre sí**.
+- Evitar corrientes de aire.
+- Esperar a que los valores **se estabilicen**.
+- Usar puntos con una **diferencia clara entre ellos** (en calibración de 2 puntos).
+
+<div style={{ clear: "both" }} />
+
+<Callout type="info" title="Diferencia mínima recomendada entre los 2 ambientes (2 puntos)">
+Para que una calibración de **2 puntos** tenga sentido, los dos ambientes deben diferenciarse claramente:
+
+- **Temperatura:** diferencia mínima **≥ 5 °C** (ideal **8–10 °C**).
+- **Humedad:** diferencia mínima **≥ 10 %HR** (ideal **15–20 %HR**).
+
+Además, ambos puntos deben estar **estables** (sin cambios rápidos) antes de tomar la lectura.
+</Callout>
+
+<Callout type="warning" title="Errores comunes">
+No calibrar durante cambios rápidos de temperatura o humedad.  
+Esto genera errores y resultados inconsistentes.
+</Callout>
+
+---
+
+## Calibración de luz
+
+<a href="/img/cfg/cal_lux.jpg" target="_blank" rel="noreferrer">
+  <img
+    src="/img/cfg/cal_lux.jpg"
+    alt="Mmeter – Calibración de luz desde la app"
+    className="mm-feature-img"
+    style={{ float: "left", margin: "0 1.5rem 1.5rem 0" }}
+  />
+</a>
+
+La calibración de luz en Mmeter funciona de manera diferente.
+
+### ¿Cómo se calibra la luz?
+
+- La calibración de luz **se realiza desde la app**.
+- No se calibra el sensor en sí, sino la **referencia máxima de medición**.
+
+Esto define:
+- cuál es el **máximo nivel de luz esperado** en el cultivo,
+- y permite expresar la luz diurna como **porcentaje (%)**.
+
+<div style={{ clear: "both" }} />
+
+---
+
+### Concepto de referencia máxima
+
+Durante la calibración de luz:
+- se expone el sensor a la **máxima iluminación real** del entorno,
+- ese valor se toma como **100 %**.
+
+A partir de ahí:
+- las mediciones diurnas se expresan como porcentaje,
+- las comparaciones son **relativas y consistentes**.
+
+👉 No se trata de una medición espectral ni absoluta (PPFD),  
+sino de una **referencia funcional para seguimiento de cambios**.
+
+---
+
+### Condiciones de medición de luz
+
+Para calibrar correctamente la luz:
+
+- Usar la **iluminación real del cultivo**.
+- Evitar sombras parciales.
+- Asegurar que el sensor esté en su **posición definitiva**.
+- Realizar la calibración con la luz **encendida al nivel máximo habitual**.
+
+<Callout type="info" title="Importante">
+La calibración de luz no busca precisión absoluta,  
+sino **coherencia y repetibilidad** dentro del mismo entorno.
+</Callout>
+
+---
+
+---
+
+## Checklist antes de calibrar
+
+Antes de modificar cualquier valor, verificá:
+
+- ✅ Tenés un **instrumento de referencia** confiable (si vas a comparar).
+- ✅ Los sensores están **cerca entre sí** y en el **mismo aire**.
+- ✅ No hay corrientes de aire ni fuentes de calor puntuales cerca.
+- ✅ Esperaste a que los valores estén **estables** (sin cambios rápidos).
+- ✅ Si vas a 2 puntos:
+  - **Temperatura:** diferencia entre ambientes **≥ 5 °C** (ideal 8–10 °C).
+  - **Humedad:** diferencia entre ambientes **≥ 10 %HR** (ideal 15–20 %HR).
+- ✅ Anotaste los valores antes de calibrar (por si necesitás volver atrás).
+
+
+## Resumen
+
+- La calibración **no es obligatoria**.
+- Temperatura y humedad pueden calibrarse para seguir un patrón o sensor.
+- 1 punto: simple y suficiente en la mayoría de los casos.
+- 2 puntos: mayor precisión, mayor complejidad.
+- Siempre calibrar en **ambientes estables y controlados**.
+- La luz se calibra desde la **app**, ajustando la referencia máxima.
+
+---
+
+⬅️ Volver a **[Configuración avanzada](/docs/config-avanzada)**

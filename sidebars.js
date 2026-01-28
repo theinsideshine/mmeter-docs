@@ -7,30 +7,36 @@ const sidebars = {
       type: 'category',
       label: 'Empezar',
       items: [
-        { type: 'doc', id: 'intro', label: 'Introducción' },
-        { type: 'doc', id: 'puesta-en-marcha', label: 'Puesta en marcha' },
-        { type: 'doc', id: 'configuracion-basica', label: 'Configuración básica' },
+        { type: 'doc', id: 'empezar/intro', label: 'Introducción' },
+        { type: 'doc', id: 'empezar/puesta-en-marcha', label: 'Puesta en marcha' },
+        { type: 'doc', id: 'empezar/uso-diario', label: 'Uso diario' },
       ],
     },
     {
       type: 'category',
       label: 'Uso de Mmeter',
       items: [
-        { type: 'doc', id: 'uso-diario', label: 'Uso diario' },
-        { type: 'doc', id: 'errores', label: 'Errores' }, // 👈 NUEVO
+        { type: 'doc', id: 'uso-meter/configuracion-basica', label: 'Configuración básica' },
+        { type: 'doc', id: 'uso-meter/errores', label: 'Errores' },
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Configuración avanzada',
+      items: [
+        { type: 'doc', id: 'config-avanzada/index', label: 'Acceso a la configuración' },
+        { type: 'doc', id: 'config-avanzada/configuracion-equipo', label: 'Configuración del equipo' },
+        { type: 'doc', id: 'config-avanzada/calibracion', label: 'Calibración de sensores' },
       ],
     },
     {
       type: 'category',
       label: 'Ayuda',
       items: [
-        { type: 'doc', id: 'troubleshooting', label: 'Solución de problemas' },
+        { type: 'doc', id: 'ayuda/troubleshooting', label: 'Solución de problemas' },
       ],
     },
   ],
 };
 
 export default sidebars;
-
-
-

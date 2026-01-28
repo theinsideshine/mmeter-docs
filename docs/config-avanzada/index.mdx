@@ -1,0 +1,88 @@
+import Callout from '@site/src/components/Callout';
+
+# Configuración avanzada
+
+En esta sección se describe cómo acceder a la **configuración avanzada de Mmeter** y para qué se utiliza.
+
+La configuración avanzada permite modificar parámetros internos del equipo que **no están disponibles desde la app**, y está pensada para ajustes técnicos, diagnóstico y calibración.
+
+> ⚠️ **Importante**  
+> Los cambios realizados en esta sección pueden afectar el funcionamiento del equipo.  
+> Modificá estos parámetros solo si sabés lo que estás haciendo o siguiendo una guía.
+
+---
+
+## Acceder al modo de configuración avanzada
+
+<a href="/img/cfg/modo_cfg.jpg" target="_blank" rel="noreferrer">
+  <img
+    src="/img/cfg/modo_cfg.jpg"
+    alt="Mmeter – Acceso al modo de configuración avanzada (CFG)"
+    className="mm-feature-img"
+    style={{ float: "right", margin: "0 0 1.5rem 1.5rem" }}
+  />
+</a>
+
+Para ingresar al modo de **configuración avanzada**:
+
+1. Abrí la app.
+2. Seleccioná el equipo **Mmeter**.
+3. En **Modo de ejecución**, tocá la **ruedita (CFG)**.
+
+Al hacerlo, el equipo pasa a **modo CFG**, lo que habilita el acceso a la **configuración avanzada desde el navegador web**.
+
+<Callout type="info" title="Acceso desde el navegador">
+Una vez en modo CFG, utilizá la **IP que se muestra en la sección Información** para acceder a la configuración avanzada desde un navegador.
+</Callout>
+
+<Callout type="info" title="Aplicación de los cambios">
+Los valores configurados en modo CFG **se guardan**, pero **no entran en funcionamiento hasta que el equipo vuelve a modo Medición**.
+</Callout>
+
+<Callout type="info" title="Salir del modo CFG">
+Para aplicar los cambios y volver al funcionamiento normal, cambiá nuevamente el modo a **Medición** desde el mismo control en la app.
+</Callout>
+
+<div style={{ clear: "both" }} />
+
+---
+
+## Acceso desde el navegador
+
+Mmeter incluye una **interfaz web interna** accesible desde un navegador.
+
+La dirección IP necesaria se muestra en la app, dentro de la sección **Información**, cuando el equipo está en **modo Medición** o **modo CFG**.
+
+### Ejemplo de acceso
+
+Ingresá la IP del equipo directamente en el navegador:
+
+`http://192.168.1.120`
+
+Este acceso abre la **configuración del equipo**.
+
+---
+
+## Secciones disponibles
+
+Desde la interfaz web se puede acceder a dos áreas diferentes:
+
+- **[Configuración del equipo](/docs/config-avanzada/configuracion-equipo)**  
+  Parámetros generales y avanzados del sistema (excepto calibración).
+
+- **[Calibración de sensores](/docs/config-avanzada/calibracion)**  
+  Ajustes finos de los sensores para mejorar la precisión de las mediciones.
+
+---
+
+## Aplicación de los cambios
+
+<Callout type="info" title="Aplicación de los cambios">
+Los parámetros configurados en **modo CFG se guardan desde la interfaz web**.  
+Los cambios **no entran en funcionamiento hasta que el equipo vuelve a modo Medición**.
+</Callout>
+
+Para que los cambios tengan efecto:
+
+1. Cambiá nuevamente el modo a **Medición** desde la app.
+2. El equipo retoma el funcionamiento normal aplicando los nuevos valores.
