@@ -1,6 +1,6 @@
 // docusaurus.config.js
 module.exports = {
-   title: 'PRUEBA CONFIG OK',
+  title: 'PRUEBA CONFIG OK',
   tagline: 'Documentación y ayuda paso a paso',
   url: 'http://localhost:3000',
   baseUrl: '/',
@@ -34,7 +34,7 @@ module.exports = {
 
     navbar: {
       title: 'Mmeter',
-      items: [{ to: '/docs/intro', label: 'Guía', position: 'left' }],
+      items: [{ to: '/docs/empezar/intro', label: 'Guía', position: 'left' }],
     },
 
     footer: {
@@ -44,3 +44,4 @@ module.exports = {
     },
   },
 };
+
