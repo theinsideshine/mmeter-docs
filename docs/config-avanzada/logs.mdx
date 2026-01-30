@@ -1,0 +1,114 @@
+import Callout from '@site/src/components/Callout';
+
+## Logs (registro interno)
+
+Mmeter puede guardar un **registro de eventos (logs)** en la memoria interna (**LittleFS**).  
+Estos logs sirven para diagnóstico: arranque, conexión Wi-Fi/Blynk, sensores, sincronización NTP, estado de zonas, etc.
+
+<Callout type="info" title="¿Para qué me sirve?">
+- Ver qué pasó durante el arranque (reset reason, sensores OK, NTP, etc.)
+- Detectar fallas intermitentes (Wi-Fi, DNS, TLS, timeouts)
+- Confirmar cambios de estado (por ejemplo: zonas en HIGH/LOW)
+</Callout>
+
+---
+
+### 1) Abrir el explorador de logs
+
+En tu navegador ingresá a:
+
+- `http://IP_DEL_EQUIPO:8081/fs`
+
+Ahí se muestra la lista de archivos disponibles en LittleFS (por ejemplo `log-AAAAMMDD-HHMMSS.txt`).
+
+<a href="/img/cfg_avanzada/logs_lista.png" target="_blank" rel="noreferrer">
+  <img
+    src="/img/cfg_avanzada/logs_lista.png"
+    alt="Lista de archivos de log en LittleFS"
+    className="mm-feature-img"
+    style={{ maxWidth: "920px" }}
+  />
+</a>
+
+---
+
+### 2) Ver, descargar y borrar
+
+En la lista de archivos vas a encontrar estas acciones:
+
+- **ver**: abre el contenido del log en el navegador.
+- **descargar**: baja el archivo `.txt` a tu PC.
+- **borrar**: elimina ese archivo.
+- **Borrar todos los logs**: elimina todos los archivos de log del dispositivo.
+
+<a href="/img/cfg_avanzada/logs_ver.png" target="_blank" rel="noreferrer">
+  <img
+    src="/img/cfg_avanzada/logs_ver.png"
+    alt="Vista del contenido de un log"
+    className="mm-feature-img"
+    style={{ maxWidth: "920px" }}
+  />
+</a>
+
+<Callout type="warning" title="Cuidado al borrar">
+Si borrás los logs, se pierde el historial.  
+Usalo cuando quieras “empezar de cero” una prueba o cuando el almacenamiento esté lleno.
+</Callout>
+
+---
+
+### 3) Cómo se crean los archivos de log
+
+- En cada arranque, Mmeter crea un archivo con nombre tipo:  
+  `log-AAAAMMDD-HHMMSS.txt`
+- El log puede incluir mensajes como:
+  - “reset reason”
+  - estado de sensores (BME280 / TSL2561)
+  - sincronización NTP
+  - límites y estados de zonas (HIGH/LOW)
+  - envíos a Blynk, etc.
+
+---
+
+### 4) Rotación diaria (cambio automático de archivo)
+
+El logger puede **rotar automáticamente** el archivo cuando cambia el día.
+Cuando rota, crea un archivo nuevo y agrega una línea de verificación:
+
+- `INFO 00:00:00 log: post-rotate alive`
+
+Esto sirve para confirmar que el log nuevo quedó operativo.
+
+---
+
+### 5) Niveles de log (qué se guarda)
+
+El logger maneja **severidad** (de menor a mayor):
+
+- `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, `CRIT`
+
+Y además el “destino” del log puede ser:
+- solo por **Serial**
+- solo a **LittleFS**
+- **Serial + LittleFS**
+- apagado
+
+> Para uso normal, lo más práctico es **Serial + LittleFS** con severidad mínima `INFO` o `DEBUG`.
+
+---
+
+### 6) Qué pasa si se queda sin espacio
+
+El logger monitorea el espacio libre en LittleFS:
+
+- Si el espacio libre cae por debajo de un umbral, el equipo puede hacer una limpieza para recuperar espacio.
+- En esos casos, el archivo nuevo puede incluir un encabezado tipo:
+  - `FS_WIPE=1` (se limpió el FS y se creó un log nuevo)
+
+Además, si ocurre un fallo de escritura:
+- intenta **cerrar y reabrir** el archivo (`FS_RETRY=1`)
+- si eso falla, hace un **wipe total** y crea un archivo nuevo
+
+<Callout type="info" title="Esto es normal en escenarios extremos">
+Si ves `FS_RETRY=1` o `FS_WIPE=1` en un log, significa que el sistema se auto-recuperó para seguir registrando.
+</Callout>

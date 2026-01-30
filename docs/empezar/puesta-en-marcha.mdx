@@ -1,6 +1,5 @@
 import Callout from '@site/src/components/Callout';
 
-
 # Puesta en marcha
 
 En esta sección vas a dejar Mmeter listo para empezar a medir y mostrar datos en la app.
@@ -59,7 +58,6 @@ En este punto, Mmeter **todavía no mide** si no tiene una red Wi-Fi configurada
 
 ## 2. Conectar Mmeter a tu Wi-Fi desde la app
 
-
 1. Abrí la app.
 2. Iniciá el proceso de conexión.
 3. Seleccioná tu red Wi-Fi e ingresá la contraseña.
@@ -82,7 +80,7 @@ Cuando el proceso termina:
   }}
 >
   <img
-    src="/video/mmeter.jpg"
+    src="/video/cfg_card.jpg"
     alt="Conectar Mmeter a Wi-Fi desde la app"
     style={{
       width: "100%",
@@ -120,15 +118,13 @@ Cuando el proceso termina:
   </div>
 </a>
 
-
-
-
 ---
 
 ## 3. Confirmar que está funcionando
 
 Vas a notar que Mmeter está listo cuando:
 
+- El de Mmeter parpadea lentamente
 - Se muestran lecturas en la app.
 - Los valores se actualizan automáticamente.
 
@@ -136,9 +132,130 @@ Si todavía no aparecen datos:
 - Esperá unos segundos.
 - Verificá que la conexión Wi-Fi sea correcta.
 
+<a
+  href="/video/com_ok.mp4"
+  target="_blank"
+  rel="noreferrer"
+  style={{
+    display: "inline-block",
+    position: "relative",
+    maxWidth: "260px",
+    margin: "1rem 0"
+  }}
+>
+  <img
+    src="/video/com_ok.jpg"
+    alt="Conectar Mmeter a Wi-Fi desde la app"
+    style={{
+      width: "100%",
+      borderRadius: "12px",
+      display: "block"
+    }}
+  />
+
+  {/* Botón Play */}
+  <div
+    style={{
+      position: "absolute",
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%, -50%)",
+      width: "56px",
+      height: "56px",
+      background: "rgba(0,0,0,0.6)",
+      borderRadius: "50%",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center"
+    }}
+  >
+    <div
+      style={{
+        marginLeft: "4px",
+        width: 0,
+        height: 0,
+        borderTop: "10px solid transparent",
+        borderBottom: "10px solid transparent",
+        borderLeft: "16px solid white"
+      }}
+    />
+  </div>
+</a>
+
 ---
 
-## 4. Qué pasa si se corta la conexión
+## 4. Resetear credenciales Wi-Fi
+
+Si necesitás cambiar de red, corregir una contraseña, o volver a configurar Mmeter desde cero, podés **borrar las credenciales Wi-Fi guardadas**.
+
+Esto se puede hacer de dos maneras:
+
+### Opción A — Desde la app (Blynk)
+- Si **borrás el template** desde la app, **también se borran las credenciales Wi-Fi** guardadas en Mmeter.
+- Después de esto, el equipo vuelve al estado inicial y vas a tener que **reconectarlo** desde la app (paso 2).
+
+### Opción B — Desde el equipo (botón oculto)
+1. Con el equipo encendido, buscá el **botón oculto** en la parte trasera.
+2. Mantenelo apretado **unos segundos**.
+3. Soltalo cuando el equipo reinicie (o indique el reset).
+
+Después del reset:
+- Mmeter **olvida la red Wi-Fi anterior**.
+- Vuelve al estado inicial y **queda listo para reconectarse** desde la app (paso 2).
+
+<a
+  href="/video/rst_wifi.mp4"
+  target="_blank"
+  rel="noreferrer"
+  style={{
+    display: "inline-block",
+    position: "relative",
+    maxWidth: "260px",
+    margin: "1rem 0"
+  }}
+>
+  <img
+    src="/video/rst_wifi.jpg"
+    alt="Resetear credenciales Wi-Fi en Mmeter"
+    style={{
+      width: "100%",
+      borderRadius: "12px",
+      display: "block"
+    }}
+  />
+
+  {/* Botón Play */}
+  <div
+    style={{
+      position: "absolute",
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%, -50%)",
+      width: "56px",
+      height: "56px",
+      background: "rgba(0,0,0,0.6)",
+      borderRadius: "50%",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center"
+    }}
+  >
+    <div
+      style={{
+        marginLeft: "4px",
+        width: 0,
+        height: 0,
+        borderTop: "10px solid transparent",
+        borderBottom: "10px solid transparent",
+        borderLeft: "16px solid white"
+      }}
+    />
+  </div>
+</a>
+
+---
+
+## 5. Qué pasa si se corta la conexión
 
 Si la conexión a Internet se pierde:
 
@@ -152,4 +269,3 @@ Cuando la conexión se restablece, Mmeter se reconecta y continúa funcionando s
 ## ¿Qué sigue?
 
 ➡️ Continuar con **[Uso diario](/docs/empezar/uso-diario)**
-

@@ -32,13 +32,13 @@ Si no existe un motivo claro para calibrar, es preferible **no modificar los val
 
 ## Concepto de calibración por comparación
 
-
 En la práctica, la calibración suele hacerse comparando **dos sensores**:
 
 - un sensor de **referencia** (patrón),
 - y el sensor que se desea ajustar (Mmeter).
 
 El objetivo **no es “corregir la realidad”**, sino lograr que:
+
 > **un sensor siga al otro de forma consistente**
 
 Esto es especialmente útil cuando:
@@ -51,7 +51,6 @@ Esto es especialmente útil cuando:
 ---
 
 ## Calibración de temperatura y humedad
-
 
 ### ¿Por qué puede calibrarse?
 
@@ -72,8 +71,9 @@ La calibración de **un solo punto** asume que:
 - el desvío entre sensores es **lineal y constante**.
 
 Ejemplo:
-- Sensor A mide 24,0 °C
+- Sensor A mide 24,0 °C  
 - Sensor B mide 24,5 °C  
+
 → existe un offset de +0,5 °C
 
 En este caso, calibrar un punto permite **alinear ambos sensores** alrededor de ese valor.
@@ -119,7 +119,7 @@ Para que una calibración de **2 puntos** tenga sentido, los dos ambientes deben
 - **Temperatura:** diferencia mínima **≥ 5 °C** (ideal **8–10 °C**).
 - **Humedad:** diferencia mínima **≥ 10 %HR** (ideal **15–20 %HR**).
 
-Además, ambos puntos deben estar **estables** (sin cambios rápidos) antes de tomar la lectura.
+Además, ambos puntos deben estar **estables** antes de tomar la lectura.
 </Callout>
 
 <Callout type="warning" title="Errores comunes">
@@ -131,25 +131,35 @@ Esto genera errores y resultados inconsistentes.
 
 ## Calibración de luz
 
-<a href="/img/cfg/cal_lux.jpg" target="_blank" rel="noreferrer">
+<a href="/img/cfg_avanzada/cal_lux.jpg" target="_blank" rel="noreferrer">
   <img
-    src="/img/cfg/cal_lux.jpg"
+    src="/img/cfg_avanzada/cal_lux.jpg"
     alt="Mmeter – Calibración de luz desde la app"
     className="mm-feature-img"
     style={{ float: "left", margin: "0 1.5rem 1.5rem 0" }}
   />
 </a>
 
-La calibración de luz en Mmeter funciona de manera diferente.
+La calibración de luz en Mmeter funciona de manera diferente a otros sensores.
 
 ### ¿Cómo se calibra la luz?
 
-- La calibración de luz **se realiza desde la app**.
-- No se calibra el sensor en sí, sino la **referencia máxima de medición**.
+La calibración de luz se realiza **siguiendo un esquema físico real** y luego confirmando la referencia desde la app.
 
-Esto define:
-- cuál es el **máximo nivel de luz esperado** en el cultivo,
-- y permite expresar la luz diurna como **porcentaje (%)**.
+El proceso correcto es:
+
+1. **Ubicar físicamente el sensor** según el esquema recomendado  
+   (posición final, distancia y orientación correctas).
+2. Ajustar la iluminación al **nivel máximo real de uso**.
+3. **Presionar el botón de calibración (ícono de la lamparita) en la app**.
+
+<Callout type="info" title="Clave para entender la calibración de luz">
+La calibración **no es automática** ni abstracta:  
+depende directamente de **cómo y dónde está colocado el sensor** en el mundo real.
+</Callout>
+
+- La calibración de luz **se realiza desde la app**.
+- No se calibra el sensor en sí, sino la **referencia máxima de medición** asociada a esa posición física.
 
 <div style={{ clear: "both" }} />
 
@@ -158,58 +168,106 @@ Esto define:
 ### Concepto de referencia máxima
 
 Durante la calibración de luz:
-- se expone el sensor a la **máxima iluminación real** del entorno,
+
+- se expone el sensor a la **máxima iluminación real del entorno**,
 - ese valor se toma como **100 %**.
 
 A partir de ahí:
-- las mediciones diurnas se expresan como porcentaje,
+- las mediciones se expresan como porcentaje,
 - las comparaciones son **relativas y consistentes**.
 
-👉 No se trata de una medición espectral ni absoluta (PPFD),  
+👉 No se trata de una medición absoluta ni espectral,  
 sino de una **referencia funcional para seguimiento de cambios**.
 
 ---
 
-### Condiciones de medición de luz
+## Ubicación correcta del sensor de luz (clave para medir y calibrar)
 
-Para calibrar correctamente la luz:
+La lectura de luz depende **directamente de dónde esté ubicado el sensor**.  
+Una mala ubicación puede generar valores poco representativos, incluso con una calibración correcta.
 
-- Usar la **iluminación real del cultivo**.
-- Evitar sombras parciales.
-- Asegurar que el sensor esté en su **posición definitiva**.
-- Realizar la calibración con la luz **encendida al nivel máximo habitual**.
-
-<Callout type="info" title="Importante">
-La calibración de luz no busca precisión absoluta,  
-sino **coherencia y repetibilidad** dentro del mismo entorno.
+<Callout type="warning" title="Regla principal (30 cm)">
+Para que la medición y la calibración sean representativas, el sensor de luz debe ubicarse a **30 cm** del lugar donde se quiere representar la luz (por ejemplo, el **dosel de las plantas**).
 </Callout>
 
 ---
+
+### ¿Qué significa “a 30 cm”?
+
+- Definí el punto de referencia (ej.: altura del dosel).
+- Ubicá el sensor **a 30 cm de ese punto**.
+- Mantené esa distancia **siempre constante** para poder comparar mediciones en el tiempo.
+
+---
+
+### Orientación recomendada
+
+- Colocar el sensor **mirando hacia arriba**.
+- Evitar inclinarlo o apuntarlo directamente a la lámpara.
+
+<a href="/img/cfg_avanzada/cal_lux.png" target="_blank" rel="noreferrer">
+  <img
+    src="/img/cfg_avanzada/cal_lux.png"
+    alt="Orientación correcta del sensor de luz"
+    className="mm-feature-img"
+    style={{ maxWidth: "520px", display: "block", margin: "1rem auto" }}
+  />
+</a>
+
+---
+
+### Evitar errores comunes de ubicación
+
+No colocar el sensor:
+
+- ❌ Pegado a la lámpara.
+- ❌ En zonas de sombra permanente.
+- ❌ Debajo de hojas u objetos.
+- ❌ Contra paredes o superficies reflectivas.
+
+---
+
+### Calibrar solo con el sensor en su posición final
+
+La calibración debe hacerse **con el sensor instalado exactamente como se va a usar**,  
+siguiendo el esquema físico recomendado.
+
+1. Colocá el sensor en su **posición definitiva** (respetando los **30 cm**).
+2. Encendé la iluminación al **nivel máximo habitual**.
+3. Evitá sombras parciales.
+4. Esperá a que la lectura se estabilice.
+5. Realizá la **calibración desde la app**, presionando el botón de la lamparita.
+
+<Callout type="info" title="Importante">
+La calibración de luz busca **coherencia y repetibilidad**,  
+no precisión absoluta.
+</Callout>
+
+<Callout type="warning" title="Mover el sensor invalida la calibración">
+Si se modifica la distancia o la ubicación del sensor,  
+la referencia deja de ser válida y **conviene recalibrar**.
+</Callout>
 
 ---
 
 ## Checklist antes de calibrar
 
-Antes de modificar cualquier valor, verificá:
+- ✅ Sensor ubicado correctamente (30 cm).
+- ✅ Posición definitiva.
+- ✅ Iluminación real del uso habitual.
+- ✅ Valores estables.
+- ✅ Anotar valores previos por seguridad.
 
-- ✅ Tenés un **instrumento de referencia** confiable (si vas a comparar).
-- ✅ Los sensores están **cerca entre sí** y en el **mismo aire**.
-- ✅ No hay corrientes de aire ni fuentes de calor puntuales cerca.
-- ✅ Esperaste a que los valores estén **estables** (sin cambios rápidos).
-- ✅ Si vas a 2 puntos:
-  - **Temperatura:** diferencia entre ambientes **≥ 5 °C** (ideal 8–10 °C).
-  - **Humedad:** diferencia entre ambientes **≥ 10 %HR** (ideal 15–20 %HR).
-- ✅ Anotaste los valores antes de calibrar (por si necesitás volver atrás).
-
+---
 
 ## Resumen
 
 - La calibración **no es obligatoria**.
-- Temperatura y humedad pueden calibrarse para seguir un patrón o sensor.
-- 1 punto: simple y suficiente en la mayoría de los casos.
-- 2 puntos: mayor precisión, mayor complejidad.
-- Siempre calibrar en **ambientes estables y controlados**.
-- La luz se calibra desde la **app**, ajustando la referencia máxima.
+- Temperatura y humedad pueden calibrarse para seguir un patrón.
+- 1 punto: simple y suficiente.
+- 2 puntos: más precisión, más cuidado.
+- La luz se calibra desde la **app**, presionando la **lamparita**.
+- La **ubicación física a 30 cm** es la clave de todo el proceso.
 
 ---
 

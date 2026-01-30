@@ -113,3 +113,18 @@
   margin-top: 0.5rem;
   font-size: 0.9rem;
 }
+
+/* Navbar "Próximamente" */
+.navbar-soon {
+  opacity: 0.6;
+  font-size: 0.85em;
+  cursor: default;
+  pointer-events: none;
+}
+
+
+/* FIX mínimo: que nada tape el navbar */
+.navbar {
+  position: relative;
+  z-index: 1000;
+}

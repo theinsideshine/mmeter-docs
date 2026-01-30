@@ -34,7 +34,20 @@ module.exports = {
 
     navbar: {
       title: 'Mmeter',
-      items: [{ to: '/docs/empezar/intro', label: 'Guía', position: 'left' }],
+      items: [
+        {
+          type: 'doc',
+          docId: 'acerca-de',
+          label: 'Acerca de',
+          position: 'left',
+        },
+        {
+          type: 'doc',
+          docId: 'proximamente',
+          label: 'Próximamente',
+          position: 'left',
+        },
+      ],
     },
 
     footer: {

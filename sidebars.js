@@ -1,5 +1,4 @@
 // @ts-check
-
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
   mmeterSidebar: [
@@ -27,6 +26,9 @@ const sidebars = {
         { type: 'doc', id: 'config-avanzada/index', label: 'Acceso a la configuración' },
         { type: 'doc', id: 'config-avanzada/configuracion-equipo', label: 'Configuración del equipo' },
         { type: 'doc', id: 'config-avanzada/calibracion', label: 'Calibración de sensores' },
+
+        // ✅ NUEVO
+        { type: 'doc', id: 'config-avanzada/logs', label: 'Logs (registro interno)' },
       ],
     },
     {

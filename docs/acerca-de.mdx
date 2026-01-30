@@ -1,0 +1,235 @@
+---
+id: acerca-de
+title: Acerca de Mmeter
+sidebar_position: 1
+---
+
+import Callout from '@site/src/components/Callout';
+
+# Mmeter — Medidor de Variables Ambientales
+
+**Proyecto de Investigación y Desarrollo (I+D)**  
+Monitoreo, análisis y control de entornos ambientales en sistemas conectados.
+
+<Callout type="info" title="Estado del proyecto">
+Mmeter se encuentra en una etapa de **prototipado funcional**, para validar el negocio.
+</Callout>
+
+---
+
+## Objetivo del proyecto
+
+Mmeter es un medidor de variables ambientales diseñado para:
+
+- monitorear condiciones ambientales de forma continua,
+- registrar datos localmente y visualizar en forma remota,
+- permitir configuración y control por zonas,
+- y mantener una arquitectura robusta preparada para expansión.
+
+---
+
+## Historia y motivación
+
+El proyecto nace de la necesidad de contar con un dispositivo que permita **medir, registrar y entender variables ambientales críticas** sin depender de soluciones cerradas.
+
+Desde el inicio se priorizó:
+
+- separación clara entre **control** y **comunicación**,
+- **estabilidad del sistema** ante errores,
+- configuración remota sin perder autonomía local,
+- y capacidad de crecimiento hacia sensores avanzados.
+
+---
+
+## Video de referencia
+
+<iframe
+  width="100%"
+  height="420"
+  src="https://www.youtube.com/embed/YdloKCMfLUs"
+  title="Referencia técnica del proyecto"
+  frameBorder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  allowFullScreen
+  style={{
+    borderRadius: "12px",
+    marginTop: "12px",
+    boxShadow: "0 10px 30px rgba(0,0,0,0.25)"
+  }}
+/>
+
+---
+
+## Arquitectura general
+
+Esta sección resume cómo está organizado el sistema y cuáles son los módulos principales
+(la idea es entender la arquitectura **sin entrar todavía en detalles de configuración**).
+
+### 1) Arquitectura del sistema
+
+Mmeter utiliza una arquitectura modular por capas:
+
+- **Capa física (Hardware):** sensores, LED RGB, botones y gabinetaría.
+- **Capa lógica (Firmware):** núcleo de control y comunicación.
+- **Capa de gestión (Usuario/Cloud):** app, interfaz web local y servicios de alertas.
+
+<a href="/img/acerca/01_arquitectura_general.png" target="_blank" rel="noreferrer">
+  <img
+    src="/img/acerca/01_arquitectura_general.png"
+    alt="Arquitectura general del sistema"
+    className="mm-feature-img"
+  />
+</a>
+
+### 2) Flujo de control (ST_CTRL)
+
+El flujo **ST_CTRL** define la lógica principal del sistema:
+
+- lectura de sensores,
+- validación por rangos,
+- control de histéresis por zona,
+- activación de alertas o actuadores,
+- retorno a loop sin bloquear la operación.
+
+<a href="/img/acerca/02_flujo_st_ctrl.png" target="_blank" rel="noreferrer">
+  <img
+    src="/img/acerca/02_flujo_st_ctrl.png"
+    alt="Flujo de control ST_CTRL"
+    className="mm-feature-img"
+  />
+</a>
+
+### 3) Conectividad (ST_COM)
+
+El flujo **ST_COM** gestiona la conectividad sin frenar la medición:
+
+- WiFi local,
+- integración con Blynk/Edgent,
+- envío de datos y eventos,
+- notificaciones y correos,
+- reconexión automática.
+
+<a href="/img/acerca/03_conectividad_st_com.png" target="_blank" rel="noreferrer">
+  <img
+    src="/img/acerca/03_conectividad_st_com.png"
+    alt="Gestión de conectividad ST_COM"
+    className="mm-feature-img"
+  />
+</a>
+
+### 4) Gestión de datos (FS + EPROM)
+
+El sistema mantiene continuidad operativa mediante:
+
+- **FS/Logger:** registro local de lecturas y eventos.
+- **EPROM:** almacenamiento persistente de configuraciones críticas.
+- **logweb:** diagnóstico rápido vía navegador.
+
+<a href="/img/acerca/04_persistencia_datos.png" target="_blank" rel="noreferrer">
+  <img
+    src="/img/acerca/04_persistencia_datos.png"
+    alt="Persistencia y gestión de datos"
+    className="mm-feature-img"
+  />
+</a>
+
+### 5) Robustez (WDT)
+
+El **Watchdog Timer (WDT)** actúa como mecanismo de seguridad:
+
+- detecta bloqueos,
+- fuerza reinicio,
+- devuelve el sistema a operación normal,
+- asegura funcionamiento 24/7.
+
+<a href="/img/acerca/05_wdt_robustez.png" target="_blank" rel="noreferrer">
+  <img
+    src="/img/acerca/05_wdt_robustez.png"
+    alt="Robustez del sistema con WDT"
+    className="mm-feature-img"
+  />
+</a>
+
+---
+
+## Sensores y variables
+
+Además de variables directas, el sistema calcula variables derivadas para interpretación más útil.
+
+### Variables medidas
+
+- Temperatura  
+- Humedad  
+- Luminosidad (Lux)  
+- **VPD** (cálculo indirecto)
+
+<a href="/img/acerca/06_sensores_y_vpd.png" target="_blank" rel="noreferrer">
+  <img
+    src="/img/acerca/06_sensores_y_vpd.png"
+    alt="Sensores y variable calculada VPD"
+    className="mm-feature-img"
+  />
+</a>
+
+---
+
+## Interfaz de usuario y operación
+
+Mmeter ofrece varios canales de interacción:
+
+- **App (Blynk):** visualización y alertas.
+- **cfgweb:** configuración local (modo configuración).
+- **logweb:** consulta rápida de eventos/diagnóstico.
+- **Feedback físico:** LED RGB + botón.
+
+<a href="/img/acerca/07_interfaz_usuario.png" target="_blank" rel="noreferrer">
+  <img
+    src="/img/acerca/07_interfaz_usuario.png"
+    alt="Interfaz de usuario: configuración y operación"
+    className="mm-feature-img"
+  />
+</a>
+
+---
+
+## Roadmap
+
+### Etapa actual — Prototipado
+
+- Consolidación del primer prototipo candidato.
+- Evaluación de gabinetes.
+- Pruebas de calibración exhaustivas.
+
+<a href="/img/acerca/08_evolucion_hardware.png" target="_blank" rel="noreferrer">
+  <img
+    src="/img/acerca/08_evolucion_hardware.png"
+    alt="Evolución del hardware: de la idea al candidato"
+    className="mm-feature-img"
+  />
+</a>
+
+### Segunda etapa — Profesionalización
+
+- Migración a **Blynk PRO**.
+- **OTA** (actualización inalámbrica de firmware).
+- Gestión de flota (si se escala).
+
+### Fase avanzada — Expansión espectral
+
+Incorporación del sensor **AS7341** para medición de múltiples bandas espectrales
+y análisis del impacto del follaje sobre la luz útil.
+
+<a href="/img/acerca/09_roadmap_fases_2_3.png" target="_blank" rel="noreferrer">
+  <img
+    src="/img/acerca/09_roadmap_fases_2_3.png"
+    alt="Roadmap tecnológico: fases 2 y 3"
+    className="mm-feature-img"
+  />
+</a>
+
+
+---
+
+## Ir a la Guía del Usuario
+
+👉 Si querés empezar a usar el equipo, seguí por: **[Empezar](/docs/empezar/intro)**
