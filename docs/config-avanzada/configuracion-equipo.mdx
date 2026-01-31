@@ -73,6 +73,8 @@ Controla dónde se generan los logs del sistema.
 
 **Recomendación:** para uso normal, mantener un nivel bajo. Para diagnóstico, usar SERIAL o SERIAL_AND_LOG.
 
+**Importante:** Debe reiniciar el equipo para ver el cambio de este parametro.
+
 ### Plotter
 Selecciona qué variable se envía al modo “plotter” (salida pensada para ver en forma de gráfica/stream).
 
@@ -97,6 +99,18 @@ Controla si el equipo envía eventos al iniciar:
 - **0 • OFF**: no envía eventos de arranque.
 - **1 • BOOT_ONLY**: envía el evento de encendido (power_up).
 - **2 • BOOT + INIT_ZONES**: envía power_up y además un “snapshot” de zonas iniciales.
+
+  ### Evento de arranque (BOOT)
+
+Durante el arranque, el sistema notificacion de BOOT con información diagnóstica:
+
+- Motivo del reset
+- Contador de reinicios
+- IP asignada
+- Versión de firmware
+
+Según la configuración, el mensaje puede incluir además el resumen INIT
+con el estado inicial de las zonas.
 
 <div style={{ clear: "both" }} />
 

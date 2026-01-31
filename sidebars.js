@@ -27,8 +27,11 @@ const sidebars = {
         { type: 'doc', id: 'config-avanzada/configuracion-equipo', label: 'Configuración del equipo' },
         { type: 'doc', id: 'config-avanzada/calibracion', label: 'Calibración de sensores' },
 
-        // ✅ NUEVO
+        // Logs
         { type: 'doc', id: 'config-avanzada/logs', label: 'Logs (registro interno)' },
+
+        // 📧 NUEVO – archivo de fantasía
+        { type: 'doc', id: 'config-avanzada/envio-mail', label: 'Envío de mails' },
       ],
     },
     {

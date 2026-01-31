@@ -1,0 +1,175 @@
+import Callout from '@site/src/components/Callout';
+
+# Envío de mails
+
+Mmeter puede enviar notificaciones por correo electrónico ante eventos relevantes del sistema utilizando SendGrid.
+El envío de mails funciona como un canal adicional de alerta y diagnóstico, independiente de la app y del canal cloud.
+
+---
+
+## Condiciones para el envío
+
+Para que el equipo envíe un correo deben cumplirse todas estas condiciones:
+
+- Firmware compilado con soporte de mails habilitado.
+- Conexión Wi-Fi activa.
+- Destinatario configurado.
+- Evento habilitado y no bloqueado por rate-limit.
+
+Si alguna condición no se cumple, el envío se omite y se registra en el log interno.
+
+<Callout type="info" title="Independiente de la app">
+El envío de mails depende únicamente de la conectividad Wi-Fi.
+No requiere que la app esté abierta ni conexión cloud activa.
+</Callout>
+
+---
+
+## Activación por firmware
+
+El subsistema de mails se habilita o deshabilita exclusivamente por macro de compilación.
+
+```c
+#define FEATURE_MAIL  0   // 1 = incluir mailer, 0 = excluir
+```
+
+Comportamiento:
+
+- FEATURE_MAIL = 1  
+  Se incluye el módulo mailer y el firmware puede enviar correos.
+
+- FEATURE_MAIL = 0  
+  El subsistema queda completamente deshabilitado.
+  No se envían mails ni se compila código relacionado.
+
+<Callout type="warning" title="Macro obligatoria">
+Si el firmware fue compilado con FEATURE_MAIL = 0, el equipo no enviará mails,
+aunque existan credenciales o destinatarios configurados.
+</Callout>
+
+---
+
+## ¿Cuándo se envía un mail?
+
+El firmware puede enviar correos en dos situaciones.
+
+### 1) Cambios de zona
+
+Se envía un mail cuando una magnitud cambia de estado:
+
+- OK → LOW
+- OK → HIGH
+- LOW/HIGH → OK
+
+Aplica a:
+- Temperatura
+- Humedad
+- VPD
+- Luz (día en %, noche en lux)
+
+El envío ocurre solo ante el cambio de estado.
+Si el valor permanece fuera de rango, no se reenvían correos repetidos.
+
+---
+
+### 2) Evento de arranque (BOOT)
+
+Durante el arranque, el sistema puede enviar un mail de BOOT con información diagnóstica:
+
+- Motivo del reset
+- Contador de reinicios
+- IP asignada
+- Versión de firmware
+
+Según la configuración, el mensaje puede incluir además el resumen INIT
+con el estado inicial de las zonas.
+
+Modos posibles:
+
+- OFF  
+  No se envía mail de arranque.
+
+- BOOT  
+  Se envía solo el mensaje de arranque.
+
+- BOOT + INIT  
+  Se envía el mensaje de arranque más el estado inicial de sensores.
+
+---
+
+## Rate-limit (anti-spam)
+
+Para evitar envíos excesivos, el sistema aplica un rate-limit por magnitud.
+
+- Ventana por defecto: 1 minuto
+- Cada magnitud tiene su propio temporizador
+
+Si un evento ocurre dentro de la ventana configurada:
+- el mail se omite
+- el motivo queda registrado en el log
+
+---
+
+## Contenido del mail
+
+Los correos se envían como texto plano (text/plain).
+
+Incluyen:
+- Clave del evento
+- Mensaje descriptivo
+- Fecha y hora local
+- Zona horaria
+- Nombre del dispositivo
+- Organización
+- Template
+- Owner
+
+---
+
+## Manejo de errores
+
+Cada intento de envío genera un resultado interno, por ejemplo:
+
+- Envío aceptado por SendGrid (202)
+- Omitido por rate-limit
+- Destinatario inválido
+- Error HTTP 4xx
+- Error HTTP 5xx
+- Error local (timeout, DNS, TLS)
+
+Si no hay Wi-Fi:
+- no se reintenta
+- no se encola
+- el sistema continúa operando normalmente
+
+---
+
+## Credenciales SendGrid
+
+El envío se realiza mediante:
+
+- Endpoint: https://api.sendgrid.com/v3/mail/send
+- Autenticación: Authorization Bearer SENDGRID_API_KEY
+
+<Callout type="danger" title="Seguridad">
+Las API Keys son credenciales sensibles.
+No deben incluirse en repositorios públicos ni en documentación compartida.
+</Callout>
+
+Se recomienda rotar la clave si fue expuesta.
+
+---
+
+## Destinatario
+
+El destinatario del mail se obtiene desde la configuración del equipo.
+Si el destinatario es inválido o está vacío, el envío se cancela y se registra el motivo.
+
+---
+
+## Buenas prácticas
+
+- Activar mails solo en firmwares de producción.
+- Ajustar límites para evitar spam.
+- Verificar Wi-Fi ante fallos de envío.
+- Volver a modo Medición luego de configurar parámetros.
